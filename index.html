@@ -1,207 +1,556 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selamat Ulang Tahun Sayang ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun Sayang ❤️</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+  <!-- Font lucu dan manis -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-body{
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-    overflow-x:hidden;
-    color:white;
-}
-
-.section{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:30px;
-}
-
-h1{
-    font-size:3rem;
-    margin-bottom:20px;
-}
-
-h2{
-    margin-bottom:15px;
-}
-
-p{
-    max-width:700px;
-    line-height:1.8;
-    font-size:1.1rem;
-}
-
-.btn{
-    margin-top:25px;
-    padding:15px 30px;
-    border:none;
-    border-radius:50px;
-    background:white;
-    color:#ff4f81;
-    font-size:1rem;
-    cursor:pointer;
-    transition:0.3s;
-    font-weight:bold;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
-.photo{
-    width:250px;
-    height:250px;
-    object-fit:cover;
-    border-radius:20px;
-    border:5px solid white;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-    margin:20px;
-}
-
-.gallery{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
-}
-
-.message-box{
-    background:rgba(255,255,255,0.2);
-    backdrop-filter:blur(10px);
-    padding:25px;
-    border-radius:20px;
-    margin-top:20px;
-}
-
-.final{
-    font-size:2rem;
-    font-weight:bold;
-}
-
-.heart{
-    position:fixed;
-    top:-20px;
-    color:white;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    to{
-        transform:translateY(110vh);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
-}
-</style>
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      color: white;
+      background: linear-gradient(135deg, #ff8fb1, #ffb6c9, #b98cff);
+    }
+
+    /* Semua halaman */
+    .page {
+      position: absolute;
+      inset: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px 18px 95px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(60px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      overflow-y: auto;
+    }
+
+    .page.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      z-index: 2;
+    }
+
+    .page.previous {
+      transform: translateX(-60px);
+    }
+
+    .page::before,
+    .page::after {
+      content: "❤";
+      position: absolute;
+      opacity: 0.14;
+      font-size: 150px;
+      z-index: -1;
+    }
+
+    .page::before {
+      top: 5%;
+      left: 7%;
+      transform: rotate(-15deg);
+    }
+
+    .page::after {
+      bottom: 5%;
+      right: 7%;
+      transform: rotate(18deg);
+    }
+
+    .content {
+      width: min(780px, 100%);
+      animation: muncul 0.7s ease;
+    }
+
+    @keyframes muncul {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mini-title {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-bottom: 14px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-family: "Pacifico", cursive;
+      font-size: clamp(2.5rem, 8vw, 4.8rem);
+      line-height: 1.25;
+      text-shadow: 0 4px 15px rgba(122, 28, 75, 0.3);
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-family: "Pacifico", cursive;
+      font-size: clamp(2rem, 6vw, 3.3rem);
+      margin-bottom: 16px;
+      text-shadow: 0 4px 15px rgba(122, 28, 75, 0.25);
+    }
+
+    p {
+      max-width: 680px;
+      margin: auto;
+      line-height: 1.8;
+      font-size: clamp(0.98rem, 2.8vw, 1.12rem);
+    }
+
+    .btn {
+      margin-top: 25px;
+      padding: 14px 27px;
+      border: none;
+      border-radius: 50px;
+      background: white;
+      color: #e94f7c;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(111, 24, 70, 0.22);
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(111, 24, 70, 0.3);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .message-box {
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(108, 29, 71, 0.15);
+    }
+
+    /* Foto utama */
+    .photo-main {
+      width: min(255px, 72vw);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      padding: 9px 9px 28px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 12px 25px rgba(77, 21, 48, 0.3);
+      transform: rotate(-3deg);
+      margin: 12px auto 8px;
+    }
+
+    /* Galeri */
+    .gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .photo-card {
+      width: min(180px, 40vw);
+      aspect-ratio: 0.82 / 1;
+      object-fit: cover;
+      padding: 7px 7px 23px;
+      background: white;
+      border-radius: 7px;
+      box-shadow: 0 10px 22px rgba(77, 21, 48, 0.28);
+      transition: 0.25s ease;
+    }
+
+    .photo-card:nth-child(1) {
+      transform: rotate(-6deg);
+    }
+
+    .photo-card:nth-child(2) {
+      transform: rotate(2deg);
+    }
+
+    .photo-card:nth-child(3) {
+      transform: rotate(6deg);
+    }
+
+    .photo-card:hover {
+      transform: scale(1.08) rotate(0deg);
+      z-index: 3;
+    }
+
+    .final {
+      font-family: "Pacifico", cursive;
+      font-size: clamp(2.2rem, 8vw, 4.4rem);
+      line-height: 1.5;
+      text-shadow: 0 5px 18px rgba(122, 28, 75, 0.3);
+    }
+
+    .small-text {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Tombol navigasi bawah */
+    .navigation {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 15px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .nav-btn {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: white;
+      color: #e94f7c;
+      font-size: 1.25rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .dot.active {
+      width: 24px;
+      border-radius: 10px;
+      background: white;
+    }
+
+    /* Hati jatuh */
+    .heart {
+      position: fixed;
+      top: -30px;
+      z-index: 20;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(115vh) rotate(360deg);
+      }
+    }
+
+    /* Confetti halaman akhir */
+    .confetti {
+      position: fixed;
+      top: -20px;
+      z-index: 30;
+      pointer-events: none;
+      animation: confettiFall 3s linear forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding-top: 20px;
+      }
+
+      .message-box {
+        padding: 18px;
+      }
+
+      .gallery {
+        gap: 10px;
+      }
+
+      .photo-card {
+        width: min(145px, 42vw);
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- HALAMAN 1 -->
+  <section class="page active">
+    <div class="content">
+      <div class="mini-title">🎀 Ada sesuatu untuk kamu</div>
+      <h1>Selamat Ulang Tahun, Sayang! ❤️</h1>
+      <p>
+        Hari ini bukan hari biasa, karena hari ini adalah hari lahir
+        seseorang yang membuat hidupku terasa lebih indah.
+      </p>
+      <button class="btn" onclick="nextPage()">
+        Buka Kejutannya ✨
+      </button>
+    </div>
+  </section>
 
-<section class="section">
-    <h1>🎂 Selamat Ulang Tahun Sayang ❤️</h1>
-    <p>
-        Hari ini adalah hari spesialmu.
-        Aku ingin memberikan sesuatu yang sederhana,
-        tetapi dibuat dengan penuh cinta untukmu.
-    </p>
+  <!-- HALAMAN 2 -->
+  <section class="page">
+    <div class="content">
+      <div class="mini-title">💖 Halaman 2 dari 5</div>
+      <h2>Untuk Kamu yang Spesial</h2>
 
-    <button class="btn" onclick="scrollToSection('surprise')">
-        Buka Kejutan ❤️
+      <!-- Ganti foto1.jpeg dengan foto kalian -->
+      <img src="foto1.jpeg" class="photo-main" alt="Foto spesial kita" />
+
+      <div class="message-box">
+        <p>
+          Terima kasih sudah hadir dalam hidupku. Terima kasih untuk semua
+          tawa, cerita, perhatian, dan kebahagiaan yang kamu berikan.
+          Semoga di usia yang baru ini, semua impianmu satu per satu terwujud.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 3 -->
+  <section class="page">
+    <div class="content">
+      <div class="mini-title">📸 Halaman 3 dari 5</div>
+      <h2>Kenangan Kita</h2>
+      <p>Setiap foto punya cerita, dan setiap cerita selalu punya kamu. 🥰</p>
+
+      <div class="gallery">
+        <img src="foto1.jpeg" class="photo-card" alt="Kenangan 1" />
+        <img src="foto2.jpeg" class="photo-card" alt="Kenangan 2" />
+        <img src="foto3.jpeg" class="photo-card" alt="Kenangan 3" />
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 4 -->
+  <section class="page">
+    <div class="content">
+      <div class="mini-title">💌 Halaman 4 dari 5</div>
+      <h2>Pesan Kecil untukmu</h2>
+
+      <div class="message-box">
+        <p>
+          Aku mungkin tidak selalu sempurna, tetapi aku selalu bersyukur
+          karena dipertemukan denganmu.
+          <br /><br />
+          Semoga kesehatan, kebahagiaan, rezeki, dan semua hal baik selalu
+          menyertaimu.
+          <br /><br />
+          Tetaplah menjadi dirimu yang selama ini membuat hari-hariku lebih
+          berwarna. Kamu berharga, kamu hebat, dan kamu sangat disayang. ❤️
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 5 -->
+  <section class="page">
+    <div class="content">
+      <div class="mini-title">🎉 Halaman terakhir</div>
+      <div class="final">
+        Aku Sayang Kamu ❤️
+        <br />
+        Selamat Ulang Tahun! 🎂
+      </div>
+
+      <p class="small-text">
+        Semoga hari ini seindah senyummu dan tahun ini penuh dengan hal-hal baik.
+      </p>
+
+      <button class="btn" onclick="celebrate()">
+        Pencet untuk Kejutan 🎊
+      </button>
+    </div>
+  </section>
+
+  <!-- Navigasi -->
+  <div class="navigation">
+    <button class="nav-btn" id="prevBtn" onclick="prevPage()" disabled>
+      ‹
     </button>
-</section>
 
-<section class="section" id="surprise">
-    <h2>💖 Untuk Kamu</h2>
+    <div class="dots" id="dots"></div>
 
-    <!-- Ganti foto1.jpg dengan foto kalian -->
-    <img src="foto1.jpg" class="photo">
+    <button class="nav-btn" id="nextBtn" onclick="nextPage()">
+      ›
+    </button>
+  </div>
 
-    <div class="message-box">
-        <p>
-            Terima kasih sudah hadir dalam hidupku.
-            Terima kasih untuk semua tawa, cerita,
-            perhatian, dan kebahagiaan yang kamu berikan.
-            Semoga di usia yang baru ini,
-            semua impianmu satu per satu terwujud.
-        </p>
-    </div>
-</section>
+  <script>
+    const pages = document.querySelectorAll(".page");
+    const dotsContainer = document.getElementById("dots");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-<section class="section">
-    <h2>📸 Kenangan Kita</h2>
+    let currentPage = 0;
 
-    <div class="gallery">
-        <img src="foto1.jpeg" class="photo">
-        <img src="foto2.jpeg" class="photo">
-        <img src="foto3.jpeg" class="photo">
-    </div>
-</section>
+    // Membuat titik indikator halaman
+    pages.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.classList.add("dot");
 
-<section class="section">
-    <h2>💌 Pesan Untukmu</h2>
+      if (index === 0) dot.classList.add("active");
 
-    <div class="message-box">
-        <p>
-            Aku mungkin tidak selalu sempurna,
-            tetapi aku selalu bersyukur karena dipertemukan denganmu.
-
-            Semoga kesehatan, kebahagiaan,
-            rezeki, dan semua hal baik selalu menyertaimu.
-
-            Tetaplah menjadi dirimu yang selama ini
-            membuat hari-hariku lebih berwarna.
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <div class="final">
-        ❤️ Aku Sayang Kamu ❤️
-        <br><br>
-        Selamat Ulang Tahun 🎉
-    </div>
-</section>
-
-<script>
-
-function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({
-        behavior:'smooth'
+      dot.addEventListener("click", () => showPage(index));
+      dotsContainer.appendChild(dot);
     });
-}
 
-function createHeart(){
-    const heart=document.createElement('div');
+    function showPage(index) {
+      if (index < 0 || index >= pages.length) return;
 
-    heart.classList.add('heart');
-    heart.innerHTML='❤️';
+      pages.forEach((page, i) => {
+        page.classList.remove("active", "previous");
 
-    heart.style.left=Math.random()*100+'vw';
-    heart.style.fontSize=(Math.random()*20+15)+'px';
+        if (i === index) {
+          page.classList.add("active");
+        }
 
-    const duration=Math.random()*3+3;
-    heart.style.animationDuration=duration+'s';
+        if (i < index) {
+          page.classList.add("previous");
+        }
+      });
 
-    document.body.appendChild(heart);
+      currentPage = index;
 
-    setTimeout(()=>{
+      const dots = document.querySelectorAll(".dot");
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentPage);
+      });
+
+      prevBtn.disabled = currentPage === 0;
+
+      if (currentPage === pages.length - 1) {
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = "♡";
+      } else {
+        nextBtn.disabled = false;
+        nextBtn.innerHTML = "›";
+      }
+    }
+
+    function nextPage() {
+      showPage(currentPage + 1);
+    }
+
+    function prevPage() {
+      showPage(currentPage - 1);
+    }
+
+    // Keyboard panah kanan dan kiri
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") nextPage();
+      if (event.key === "ArrowLeft") prevPage();
+    });
+
+    // Efek hati jatuh
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+
+      const hearts = ["❤️", "💖", "💕", "💗", "✨"];
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 16 + 14 + "px";
+
+      const duration = Math.random() * 3 + 4;
+      heart.style.animationDuration = duration + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
         heart.remove();
-    },duration*1000);
-}
+      }, duration * 1000);
+    }
 
-setInterval(createHeart,300);
+    setInterval(createHeart, 500);
 
-</script>
+    // Efek confetti saat tombol halaman terakhir dipencet
+    function celebrate() {
+      const emojis = ["🎉", "🎊", "💖", "✨", "🌸", "💕"];
 
+      for (let i = 0; i < 70; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.fontSize = Math.random() * 20 + 15 + "px";
+        confetti.style.animationDuration = Math.random() * 2 + 2 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 4000);
+      }
+    }
+  </script>
 </body>
 </html>
