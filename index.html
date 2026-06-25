@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selamat Ulang Tahun Sayang ❤️</title>
+  <title>Haii Sayangnya Aku, Intan Danur Putri ❤️</title>
 
-  <meta property="og:title" content="Selamat Ulang Tahun Sayang ❤️" />
-  <meta property="og:description" content="Ada kejutan kecil dan pesan spesial yang aku buat khusus untuk kamu. Buka yuk! ✨" />
+  <!-- Meta Tags untuk Preview saat link dikirim ke WhatsApp -->
+  <meta property="og:title" content="Ada sesuatu buat kamu ❤️" />
+  <meta property="og:description" content="Buka yuk kejutannya! ✨" />
   <meta property="og:image" content="foto1.jpeg" />
   <meta property="og:type" content="website" />
 
@@ -391,30 +392,32 @@
 </head>
 
 <body>
+  <!-- Pemutar Musik Latar (Akan berputar otomatis saat tombol pertama ditekan) -->
   <audio id="bgm" loop>
     <source src="lagu-romantis.mp3" type="audio/mpeg" />
   </audio>
 
+  <!-- HALAMAN 1 -->
   <section class="page active">
     <div class="content">
-      <div class="mini-title">🎀 Ada sesuatu untuk kamu</div>
+      <div class="mini-title">🎀 Haiii...</div>
 
-      <h1>Selamat Ulang Tahun, Sayang! ❤️</h1>
+      <h1>Hallo Sayangnya Aku,<br>Intan Danur Putri ❤️</h1>
 
       <p>
-        Hari ini bukan hari biasa, karena hari ini adalah hari lahir
-        seseorang yang membuat hidupku terasa lebih indah.
+        Aku ada sesuatu nih buat kamuu... langsung lanjut yahh! 🥰
       </p>
 
       <button class="btn" onclick="nextPage()">
-        Buka Kejutannya ✨
+        Lanjut Yuk ✨
       </button>
     </div>
   </section>
 
+  <!-- HALAMAN 2 -->
   <section class="page">
     <div class="content">
-      <div class="mini-title">💖 Halaman 2 dari 5</div>
+      <div class="mini-title">💖 Selamat Ulang Tahun</div>
 
       <h2>Untuk Kamu yang Spesial</h2>
 
@@ -430,14 +433,15 @@
     </div>
   </section>
 
+  <!-- HALAMAN 3 -->
   <section class="page">
     <div class="content">
-      <div class="mini-title">📸 Halaman 3 dari 5</div>
+      <div class="mini-title">📸 Kenangan Kita</div>
 
-      <h2>Kenangan Kita</h2>
+      <h2>Terekam Indah</h2>
 
       <p>
-        Setiap foto punya cerita, dan setiap cerita selalu punya kamu. 🥰
+        Setiap foto punya cerita, dan setiap cerita selalu ada kamu di dalamnya. 🥰
       </p>
 
       <div class="gallery">
@@ -448,11 +452,12 @@
     </div>
   </section>
 
+  <!-- HALAMAN 4 -->
   <section class="page">
     <div class="content">
-      <div class="mini-title">💌 Halaman 4 dari 5</div>
+      <div class="mini-title">💌 Pesan Kecil</div>
 
-      <h2>Pesan Kecil untukmu</h2>
+      <h2>Harapanku Untukmu</h2>
 
       <div class="message-box">
         <p>
@@ -469,9 +474,10 @@
     </div>
   </section>
 
+  <!-- HALAMAN 5 -->
   <section class="page">
     <div class="content">
-      <div class="mini-title">🎉 Halaman terakhir</div>
+      <div class="mini-title">🎉 Yeyyyy!</div>
 
       <div class="final">
         Aku Sayang Kamu ❤️
@@ -489,6 +495,7 @@
     </div>
   </section>
 
+  <!-- Navigasi bawah -->
   <div class="navigation">
     <button class="nav-btn" id="prevBtn" onclick="prevPage()" disabled>
       ‹
