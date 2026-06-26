@@ -112,7 +112,9 @@
 </head>
 
 <body>
-  <audio id="bgm" loop><source src="lagu-romantis.mp3" type="audio/mpeg" /></audio>
+  <audio id="bgm" loop>
+    <source src="Golden-hour.mp3" type="audio/mpeg">
+</audio>
 
   <section class="page active">
     <div class="content">
@@ -126,10 +128,10 @@
   <section class="page">
     <div class="content">
       <div class="mini-title">💖 Mylovely</div>
-      <h2>Untuk Kamu yang Spesial</h2>
+      <h2>Hari Spesial Buat Orang Spesial</h2>
       <img src="foto1.jpeg" class="photo-main" />
       <div class="message-box">
-        <p>Terima kasih sudah hadir dalam hidupku. Terima kasih untuk semua tawa, cerita, perhatian, dan kebahagiaan yang kamu berikan.</p>
+        <p>Makasih ya udah selalu jadi partner paling seru buat ngobrol, jalan, bercanda, dan berbagi cerita. Kehadiranmu bikin banyak hari biasa terasa jadi lebih berwarna hihihi.</p>
       </div>
       <button class="btn" onclick="nextPage()">Lanjut lagi sayang✨</button>
     </div>
@@ -173,9 +175,9 @@
     </div>
     <div class="content" id="step-final" style="display: none;">
       <div class="mini-title">🎉 Yeyyyy!</div>
-      <div class="final">❤️<br>Selamat Ulang Tahun Sayangg! 🎂</div>
+      <div class="final">💐<br>Selamat Ulang Tahun Sayangg! 🎂</div>
       <p class="small-text">Semoga hari ini seindah senyummu!</p><br>
-      <div class="final">Aku Sayang Kamuu❤️</div>
+      <div class="final">❤️❤️❤️</div>
       <button class="btn" onclick="celebrate()">Pencet lagi untuk Kejutan 🎊</button>
     </div>
   </section>
@@ -238,7 +240,7 @@
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      const hearts = ["❤️", "💖", "💕", "💗", "✨"];
+      const hearts = ["❤️", "💖", "💕", "💗", "✨", "💐"];
       heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = Math.random() * 16 + 14 + "px";
@@ -250,7 +252,7 @@
     setInterval(() => { if (!document.hidden) createHeart(); }, 500);
 
     function celebrate() {
-      const emojis = ["🎉", "🎊", "💖", "✨", "🌸", "💕"];
+      const emojis = ["🎉", "🎊", "💐", "💖", "✨", "🌸", "💕"];
       for (let i = 0; i < 70; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
